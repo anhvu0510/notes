@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Kho ghi chú và tài liệu kỹ thuật cá nhân." />
+  <meta name="description" content="Kho tài liệu kỹ thuật cá nhân." />
   <title>Notes Docs</title>
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
@@ -15,101 +15,57 @@
         <span class="brand-text">Notes Docs</span>
       </a>
       <nav class="site-nav" aria-label="Điều hướng chính">
-        <a href="#docs">Tài liệu</a>
-        <a href="#structure">Cấu trúc</a>
+        <a href="index.html" aria-current="page">Tài liệu</a>
         <a href="https://github.com/anhvu0510/notes" target="_blank" rel="noopener noreferrer">GitHub</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <p class="eyebrow">Static Documentation Site</p>
-          <h1>Kho đọc tài liệu cá nhân trên GitHub Pages</h1>
-          <p class="hero-text">
-            Website tĩnh dùng HTML/CSS cơ bản, tối ưu để lưu note, hướng dẫn kỹ thuật,
-            tài liệu học tập và các file Markdown/HTML có thể đọc trực tiếp trên trình duyệt.
+  <main class="home-main">
+    <section class="library-hero">
+      <div class="container library-hero-inner">
+        <div>
+          <p class="eyebrow">Documentation Library</p>
+          <h1>Tài liệu</h1>
+          <p class="library-subtitle">
+            Nơi lưu các hướng dẫn kỹ thuật, ghi chú học tập và tài liệu thực hành.
           </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#docs">Xem tài liệu</a>
-            <a class="btn btn-secondary" href="antigravity-google.md">Mở Markdown gốc</a>
-          </div>
         </div>
-
-        <aside class="hero-card" aria-label="Thông tin nhanh">
-          <div class="stat-card">
-            <span class="stat-value">HTML</span>
-            <span class="stat-label">Không cần build tool</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-value">CSS</span>
-            <span class="stat-label">Giao diện đọc tài liệu</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-value">Pages</span>
-            <span class="stat-label">Sẵn sàng deploy</span>
-          </div>
-        </aside>
+        <div class="library-count" aria-label="Số lượng tài liệu">
+          <strong>01</strong>
+          <span>tài liệu hiện có</span>
+        </div>
       </div>
     </section>
 
-    <section id="docs" class="section">
+    <section class="section docs-section" aria-labelledby="docs-title">
       <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Documents</p>
-          <h2>Danh sách tài liệu</h2>
-          <p>Thêm tài liệu mới bằng cách tạo file HTML trong thư mục <code>docs/</code> và thêm card vào trang này.</p>
+        <div class="section-heading compact-heading">
+          <h2 id="docs-title">Danh sách tài liệu</h2>
+          <p>Chọn tài liệu để đọc trực tiếp trên web.</p>
         </div>
 
-        <div class="docs-grid">
-          <article class="doc-card">
-            <div class="doc-meta">Guide · Antigravity</div>
-            <h3>Google Antigravity</h3>
-            <p>Giải thích khái niệm, cách sử dụng, ứng dụng thực tế, workflow an toàn và prompt mẫu.</p>
-            <div class="doc-links">
-              <a href="docs/antigravity-google.html">Đọc bản HTML</a>
-              <a href="antigravity-google.md">Xem Markdown</a>
+        <div class="docs-list">
+          <article class="doc-row">
+            <div class="doc-row-main">
+              <div class="doc-kicker">Guide · AI Coding Tool</div>
+              <h3>Google Antigravity</h3>
+              <p>
+                Giải thích khái niệm, cách sử dụng, MCP, Skills, Rules, Plugins,
+                CLI, workflow an toàn và các ứng dụng thực tế khi dùng Antigravity.
+              </p>
+              <div class="doc-tags" aria-label="Chủ đề tài liệu">
+                <span>Antigravity</span>
+                <span>AI Agent</span>
+                <span>Workflow</span>
+                <span>GitHub Pages</span>
+              </div>
             </div>
+            <a class="read-link" href="docs/antigravity-google.html" aria-label="Đọc tài liệu Google Antigravity">
+              Đọc tài liệu
+              <span aria-hidden="true">→</span>
+            </a>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="structure" class="section section-muted">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Project Structure</p>
-          <h2>Cấu trúc thư mục đề xuất</h2>
-        </div>
-
-        <pre class="tree"><code>notes/
-├── index.html
-├── antigravity-google.md
-├── docs/
-│   └── antigravity-google.html
-└── assets/
-    └── css/
-        └── styles.css</code></pre>
-
-        <div class="tips-grid">
-          <div class="tip-card">
-            <h3>Trang chủ</h3>
-            <p><code>index.html</code> là entrypoint chính cho GitHub Pages.</p>
-          </div>
-          <div class="tip-card">
-            <h3>Tài liệu HTML</h3>
-            <p><code>docs/</code> chứa bản đọc đẹp trên web, mỗi tài liệu một file.</p>
-          </div>
-          <div class="tip-card">
-            <h3>Markdown gốc</h3>
-            <p>File <code>.md</code> giữ nội dung nguồn để dễ chỉnh sửa, copy hoặc tái xuất bản.</p>
-          </div>
-          <div class="tip-card">
-            <h3>Asset dùng chung</h3>
-            <p><code>assets/css/styles.css</code> quản lý toàn bộ giao diện cơ bản.</p>
-          </div>
         </div>
       </div>
     </section>
@@ -117,8 +73,8 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>© Notes Docs. Built with HTML/CSS for GitHub Pages.</p>
-      <a href="https://github.com/anhvu0510/notes" target="_blank" rel="noopener noreferrer">View repository</a>
+      <p>© Notes Docs</p>
+      <a href="https://github.com/anhvu0510/notes" target="_blank" rel="noopener noreferrer">Repository</a>
     </div>
   </footer>
 </body>
