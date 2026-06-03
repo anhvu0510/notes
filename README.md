@@ -2,12 +2,13 @@
 
 Kho tài liệu tĩnh dùng HTML/CSS cơ bản để triển khai bằng GitHub Pages.
 
-Mục tiêu của repo:
+Mục tiêu:
 
-- Lưu tài liệu kỹ thuật cá nhân.
-- Mỗi tài liệu có bản HTML đọc đẹp trong `docs/`.
-- Homepage `index.html` chỉ đóng vai trò thư viện/liệt kê tài liệu.
+- Tài liệu được tổ chức theo từng folder/chủ đề.
+- Homepage `index.html` là thư viện tài liệu, không phải landing page quảng cáo.
+- Mỗi folder trong `docs/` chứa các file HTML docs liên quan.
 - Giao diện thống nhất bằng `assets/css/styles.css`.
+- Dark mode là mặc định.
 
 ---
 
@@ -21,7 +22,12 @@ notes/
 │   └── css/
 │       └── styles.css
 ├── docs/
-│   └── antigravity-google.html
+│   ├── ai-tools/
+│   │   └── antigravity-google.html
+│   ├── frontend/
+│   ├── backend/
+│   ├── database/
+│   └── security/
 └── *.md
 ```
 
@@ -29,34 +35,47 @@ notes/
 
 | Đường dẫn | Vai trò |
 |---|---|
-| `index.html` | Trang chủ, chỉ liệt kê tài liệu. |
-| `docs/*.html` | Các trang tài liệu HTML đọc trên web. |
+| `index.html` | Trang chủ, hiển thị folder/chủ đề và docs bên trong. |
+| `docs/<folder>/*.html` | Trang tài liệu HTML theo từng nhóm. |
 | `assets/css/styles.css` | CSS dùng chung toàn site. |
 | `README.md` | Chuẩn style để AI/người dùng tạo docs mới. |
 | `*.md` | Markdown gốc hoặc bản nháp, không phải trang đọc chính. |
 
 ---
 
-## 2. Quy tắc tổng quan khi AI tạo tài liệu HTML
+## 2. Folder docs được khuyến nghị
 
-Khi tạo tài liệu mới, AI phải tuân thủ các luật sau:
+| Folder | Dùng cho |
+|---|---|
+| `docs/ai-tools/` | AI coding tools, agent workflow, MCP, skills, rules, automation. |
+| `docs/frontend/` | UI/UX, HTML, CSS, JavaScript, React, Next.js, dashboard. |
+| `docs/backend/` | API, service, auth, queue, server architecture. |
+| `docs/database/` | SQL, SQLite, PostgreSQL, migration, indexing. |
+| `docs/security/` | CVE, audit, secure coding, auth, upload security. |
+| `docs/devops/` | GitHub Actions, deploy, Docker, CI/CD. |
 
-1. **Không tạo thêm framework**: không dùng React, Vue, Tailwind, Bootstrap, build tool.
-2. **Chỉ dùng HTML/CSS cơ bản**: HTML nằm trong `docs/`, style dùng class có sẵn trong `styles.css`.
-3. **Không inline CSS nếu không thật sự cần**.
-4. **Không phá layout chung**: header, footer, container, article-shell phải giữ cùng format.
-5. **Không link Markdown gốc trên homepage** trừ khi user yêu cầu.
-6. **Homepage chỉ hiển thị danh sách tài liệu**, không giải thích cấu trúc project, không quảng cáo HTML/CSS/GitHub Pages.
-7. **Tài liệu phải dễ đọc**: heading rõ, đoạn ngắn, bảng khi cần so sánh, code block khi có lệnh/prompt.
-8. **Ngôn ngữ mặc định: tiếng Việt**.
-9. **Dark mode là mặc định**.
-10. **Tối ưu đọc trên mobile**: không tạo bảng quá rộng nếu có thể thay bằng list.
+Nếu tài liệu không khớp folder hiện có, tạo folder mới bằng kebab-case.
 
 ---
 
-## 3. Template HTML chuẩn cho một trang docs
+## 3. Quy tắc bắt buộc khi AI tạo tài liệu HTML
 
-Tạo file mới trong `docs/ten-tai-lieu.html` theo mẫu:
+1. Không dùng React, Vue, Tailwind, Bootstrap hoặc build tool.
+2. Chỉ dùng HTML/CSS cơ bản.
+3. Không inline CSS nếu không thật sự cần.
+4. Không phá layout chung: `site-header`, `article-layout`, `article-shell`, `site-footer`.
+5. File docs phải nằm trong `docs/<folder>/ten-file.html`.
+6. Homepage phải tổ chức theo folder, không tạo hero to đùng, không hiển thị block thống kê thừa.
+7. Không link Markdown gốc trên homepage trừ khi user yêu cầu.
+8. Nội dung mặc định viết bằng tiếng Việt.
+9. Dark mode là mặc định.
+10. Tối ưu mobile, không để table/card vỡ layout.
+
+---
+
+## 4. Template HTML chuẩn cho file trong folder
+
+Ví dụ file nằm tại `docs/ai-tools/antigravity-google.html`, đường dẫn CSS phải là `../../assets/css/styles.css`.
 
 ```html
 <!DOCTYPE html>
@@ -66,17 +85,17 @@ Tạo file mới trong `docs/ten-tai-lieu.html` theo mẫu:
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Mô tả ngắn của tài liệu." />
   <title>Tên tài liệu | Notes Docs</title>
-  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
 </head>
 <body class="article-page">
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="../index.html" aria-label="Notes Docs Home">
+      <a class="brand" href="../../index.html" aria-label="Notes Docs Home">
         <span class="brand-mark">N</span>
         <span class="brand-text">Notes Docs</span>
       </a>
       <nav class="site-nav" aria-label="Điều hướng chính">
-        <a href="../index.html">Docs</a>
+        <a href="../../index.html">Docs</a>
         <a href="https://github.com/anhvu0510/notes" target="_blank" rel="noopener noreferrer">GitHub</a>
       </nav>
     </div>
@@ -84,23 +103,23 @@ Tạo file mới trong `docs/ten-tai-lieu.html` theo mẫu:
 
   <main class="article-layout">
     <article class="article-shell">
-      <a class="back-link" href="../index.html">← Về trang chủ</a>
+      <a class="back-link" href="../../index.html">← Về thư viện</a>
 
       <p class="eyebrow">CATEGORY · TYPE</p>
       <h1>Tên tài liệu</h1>
 
       <p class="article-note">
-        Tóm tắt ngắn tài liệu này dùng để làm gì, ai nên đọc, và kết quả nhận được sau khi đọc.
+        Tóm tắt ngắn: tài liệu này dùng để làm gì, ai nên đọc, đọc xong làm được gì.
       </p>
 
       <h2>1. Khái niệm</h2>
-      <p>Nội dung giải thích...</p>
+      <p>Nội dung...</p>
 
       <h2>2. Cách sử dụng</h2>
-      <p>Nội dung hướng dẫn...</p>
+      <p>Nội dung...</p>
 
       <h2>3. Ứng dụng thực tế</h2>
-      <p>Nội dung ví dụ...</p>
+      <p>Nội dung...</p>
 
       <h2>4. Best practices</h2>
       <ul>
@@ -127,9 +146,53 @@ Tạo file mới trong `docs/ten-tai-lieu.html` theo mẫu:
 
 ---
 
-## 4. Chuẩn nội dung tài liệu
+## 5. Chuẩn homepage theo folder
 
-Một tài liệu tốt nên có cấu trúc:
+Homepage phải có cấu trúc:
+
+```text
+Header
+Intro ngắn
+Folder layout
+├── Sidebar danh mục folder
+└── Folder content
+    ├── Folder heading
+    └── Doc tiles
+Footer
+```
+
+Không thêm:
+
+- Block `Available Docs / Format / Deploy`.
+- Hero quá lớn che hết tài liệu.
+- Section giải thích GitHub Pages.
+- Link Markdown gốc trên card.
+
+Mẫu doc tile:
+
+```html
+<article class="doc-tile">
+  <a class="tile-icon" href="docs/folder/ten-file.html" aria-label="Đọc Tên tài liệu">
+    <span>AB</span>
+  </a>
+  <div class="tile-body">
+    <div class="doc-kicker">Guide · Category</div>
+    <h3><a href="docs/folder/ten-file.html">Tên tài liệu</a></h3>
+    <p>Mô tả ngắn tài liệu trong 1-2 câu.</p>
+    <div class="doc-tags" aria-label="Chủ đề tài liệu">
+      <span>Tag 1</span>
+      <span>Tag 2</span>
+    </div>
+  </div>
+  <a class="tile-read" href="docs/folder/ten-file.html">Đọc →</a>
+</article>
+```
+
+---
+
+## 6. Chuẩn nội dung tài liệu
+
+Một tài liệu tốt nên có:
 
 ```text
 1. Khái niệm
@@ -144,18 +207,11 @@ Một tài liệu tốt nên có cấu trúc:
 10. Nguồn tham khảo
 ```
 
-Không bắt buộc đủ 10 phần. Tùy nội dung nhưng phải ưu tiên:
-
-- **Dễ đọc** hơn là dài dòng.
-- **Ví dụ thực tế** hơn là lý thuyết suông.
-- **Code block rõ ràng** hơn là nhét lệnh vào đoạn văn.
-- **Bảng** chỉ dùng khi thật sự giúp so sánh.
+Không bắt buộc đủ 10 phần. Ưu tiên rõ ràng, thực tế, có ví dụ.
 
 ---
 
-## 5. Chuẩn heading
-
-Dùng heading theo thứ bậc:
+## 7. Chuẩn heading
 
 ```html
 <h1>Tên tài liệu</h1>
@@ -163,17 +219,11 @@ Dùng heading theo thứ bậc:
 <h3>1.1 Ý nhỏ</h3>
 ```
 
-Không nhảy cấp:
-
-```html
-<!-- Sai -->
-<h1>Title</h1>
-<h4>Mục nhỏ</h4>
-```
+Không nhảy cấp heading.
 
 ---
 
-## 6. Chuẩn code block
+## 8. Chuẩn code block
 
 Dùng `pre > code` cho command, prompt, JSON, config:
 
@@ -182,100 +232,17 @@ Dùng `pre > code` cho command, prompt, JSON, config:
 npm run build</code></pre>
 ```
 
-Prompt dài cũng dùng code block:
-
-```html
-<pre><code>Hãy phân tích repo này và trả về:
-- Kiến trúc tổng quan
-- Module chính
-- Rủi ro kỹ thuật</code></pre>
-```
-
-Không dùng screenshot thay cho text nếu nội dung có thể viết bằng text.
-
 ---
 
-## 7. Chuẩn bảng
+## 9. Chuẩn note/cảnh báo
 
-Dùng bảng khi so sánh rõ ràng:
-
-```html
-<table>
-  <thead>
-    <tr>
-      <th>Tiêu chí</th>
-      <th>Cách A</th>
-      <th>Cách B</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Độ phức tạp</td>
-      <td>Thấp</td>
-      <td>Cao</td>
-    </tr>
-  </tbody>
-</table>
-```
-
-Không tạo bảng quá nhiều cột. Nếu quá 4 cột, ưu tiên tách thành list.
-
----
-
-## 8. Chuẩn note/cảnh báo
-
-Dùng class `article-note` cho ghi chú nổi bật:
+Dùng `article-note` cho nội dung quan trọng:
 
 ```html
 <p class="article-note">
   Lưu ý: Không chạy migration trực tiếp trên production nếu chưa backup dữ liệu.
 </p>
 ```
-
-Chỉ dùng cho nội dung quan trọng:
-
-- Cảnh báo bảo mật.
-- Lưu ý dữ liệu.
-- Kết luận quan trọng.
-- Điều kiện bắt buộc.
-
----
-
-## 9. Chuẩn homepage khi thêm tài liệu mới
-
-Khi thêm tài liệu mới, update `index.html` trong `.docs-list` bằng card mới.
-
-Mẫu card:
-
-```html
-<article class="doc-card-featured">
-  <a class="doc-cover" href="docs/ten-tai-lieu.html" aria-label="Đọc tài liệu Tên tài liệu">
-    <span class="doc-icon">TD</span>
-    <span class="doc-status">Ready</span>
-  </a>
-
-  <div class="doc-content">
-    <div class="doc-kicker">Guide · Category</div>
-    <h3><a href="docs/ten-tai-lieu.html">Tên tài liệu</a></h3>
-    <p>Mô tả ngắn tài liệu trong 1-2 câu.</p>
-
-    <div class="doc-tags" aria-label="Chủ đề tài liệu">
-      <span>Tag 1</span>
-      <span>Tag 2</span>
-      <span>Tag 3</span>
-    </div>
-  </div>
-
-  <div class="doc-action">
-    <a class="read-link" href="docs/ten-tai-lieu.html" aria-label="Đọc tài liệu Tên tài liệu">
-      Đọc ngay
-      <span aria-hidden="true">→</span>
-    </a>
-  </div>
-</article>
-```
-
-Sau khi thêm card, cập nhật số lượng trong `hero-panel` nếu cần.
 
 ---
 
@@ -285,9 +252,9 @@ Dùng kebab-case, không dấu, không khoảng trắng:
 
 ```text
 Đúng:
-docs/google-antigravity.html
-docs/github-pages-guide.html
-docs/nextjs-dashboard-ui.html
+docs/ai-tools/google-antigravity.html
+docs/frontend/nextjs-dashboard-ui.html
+docs/database/sqlite-guide.html
 
 Sai:
 docs/Google Antigravity.html
@@ -299,56 +266,49 @@ docs/new_doc.HTML
 
 ## 11. Checklist trước khi push
 
-Trước khi commit, kiểm tra:
-
-- [ ] File HTML nằm trong `docs/`.
+- [ ] File HTML nằm trong `docs/<folder>/`.
 - [ ] Trang có `lang="vi"`.
 - [ ] Trang có `meta viewport`.
-- [ ] Trang link đúng CSS: `../assets/css/styles.css`.
-- [ ] Có header giống site.
-- [ ] Có footer giống site.
-- [ ] Có back link về `../index.html`.
-- [ ] Không dùng inline style bừa bãi.
+- [ ] Trang link CSS đúng: `../../assets/css/styles.css`.
+- [ ] Header link về `../../index.html`.
+- [ ] Back link ghi `← Về thư viện`.
 - [ ] Không dùng framework ngoài.
-- [ ] Tất cả link ngoài có `target="_blank" rel="noopener noreferrer"`.
-- [ ] Homepage có card trỏ tới tài liệu mới.
-- [ ] Mobile không bị vỡ layout.
+- [ ] Không inline CSS bừa bãi.
+- [ ] Link ngoài có `target="_blank" rel="noopener noreferrer"`.
+- [ ] Homepage đã thêm folder/doc tile tương ứng.
+- [ ] Mobile không vỡ layout.
 
 ---
 
 ## 12. Prompt mẫu cho AI tạo tài liệu mới
-
-Dùng prompt này khi muốn AI thêm một tài liệu mới vào repo:
 
 ```md
 Hãy thêm một tài liệu HTML mới vào repo Notes Docs.
 
 Yêu cầu:
 - Đọc README.md trước để tuân thủ style.
-- Tạo file mới trong docs/ bằng kebab-case.
+- Xác định folder phù hợp trong docs/. Nếu chưa có thì tạo folder mới bằng kebab-case.
+- Tạo file mới trong docs/<folder>/ten-file.html.
 - Dùng layout chuẩn: site-header, article-layout, article-shell, site-footer.
-- Dùng dark mode CSS hiện có, không thêm framework.
-- Nội dung viết bằng tiếng Việt, rõ ràng, dễ đọc.
-- Có h1, h2, h3 đúng cấp.
+- Link CSS đúng theo độ sâu: ../../assets/css/styles.css.
+- Viết bằng tiếng Việt, rõ ràng, thực tế.
+- Dùng h1, h2, h3 đúng cấp.
 - Dùng pre/code cho command, config, prompt.
 - Dùng article-note cho lưu ý quan trọng.
-- Update index.html để thêm card tài liệu mới.
-- Không link Markdown gốc trên homepage.
-- Sau khi xong, báo danh sách file đã sửa.
+- Update index.html theo cấu trúc folder UI, thêm doc tile vào đúng folder.
+- Không tạo hero lớn, không thêm thống kê thừa, không link Markdown gốc trên homepage.
+- Không dùng framework, không inline CSS bừa bãi.
+- Sau khi xong, báo danh sách file đã tạo/sửa.
 ```
 
 ---
 
 ## 13. Triết lý trình bày
 
-Trang này không phải landing page quảng cáo. Đây là **documentation library**.
-
-Ưu tiên:
-
 ```text
-Dễ đọc > Nhiều hiệu ứng
-Rõ cấu trúc > Trang trí phức tạp
-Nội dung chính > Nút phụ
+Folder rõ ràng > Danh sách lộn xộn
+Tài liệu dễ đọc > Landing page màu mè
+Nội dung chính > Block thống kê thừa
 HTML đơn giản > Framework nặng
 Dark mode thống nhất > Mỗi trang một style
 ```
