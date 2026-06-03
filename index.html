@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Kho tài liệu kỹ thuật cá nhân tổ chức theo từng thư mục." />
   <title>Notes Docs</title>
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260603-mobile-folder-ui" />
 </head>
 <body>
-  <div class="page-glow page-glow-one"></div>
-  <div class="page-glow page-glow-two"></div>
+  <div class="page-bg" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="container header-inner">
@@ -24,82 +23,86 @@
     </div>
   </header>
 
-  <main class="home-main docs-home">
-    <section class="docs-top">
-      <div class="container docs-top-inner">
-        <p class="eyebrow">Documentation Library</p>
+  <main class="docs-shell">
+    <section class="docs-hero">
+      <div class="container docs-hero-inner">
+        <div class="hero-label">Documentation Library</div>
         <h1>Notes Docs</h1>
-        <p>
-          Tài liệu được tổ chức theo từng folder/chủ đề để dễ mở rộng, dễ tìm và dễ đọc trên GitHub Pages.
-        </p>
+        <p>Tài liệu được tổ chức theo folder/chủ đề. Chọn folder bên dưới để đọc nhanh các hướng dẫn kỹ thuật.</p>
       </div>
     </section>
 
-    <section class="folder-layout section" aria-label="Thư viện tài liệu">
-      <div class="container folder-layout-inner">
-        <aside class="folder-sidebar" aria-label="Danh mục tài liệu">
-          <div class="sidebar-block">
-            <span class="sidebar-label">Folders</span>
-            <a class="sidebar-link active" href="#ai-tools">
+    <section class="docs-browser" aria-label="Thư viện tài liệu">
+      <div class="container docs-browser-inner">
+        <aside class="folder-nav" aria-label="Danh mục folder">
+          <div class="folder-nav-card">
+            <div class="folder-nav-title">Folders</div>
+            <a class="folder-nav-item is-active" href="#ai-tools">
               <span>AI Tools</span>
-              <strong>01</strong>
+              <strong>1</strong>
             </a>
-            <a class="sidebar-link muted" href="#coming-soon">
+            <a class="folder-nav-item" href="#frontend">
               <span>Frontend</span>
-              <strong>00</strong>
+              <strong>0</strong>
             </a>
-            <a class="sidebar-link muted" href="#coming-soon">
+            <a class="folder-nav-item" href="#backend">
               <span>Backend</span>
-              <strong>00</strong>
+              <strong>0</strong>
             </a>
-            <a class="sidebar-link muted" href="#coming-soon">
+            <a class="folder-nav-item" href="#security">
               <span>Security</span>
-              <strong>00</strong>
+              <strong>0</strong>
             </a>
           </div>
         </aside>
 
-        <div class="folder-content">
-          <section id="ai-tools" class="folder-section">
-            <div class="folder-heading">
+        <div class="folder-main">
+          <section id="ai-tools" class="folder-panel">
+            <div class="folder-panel-head">
               <div>
-                <div class="folder-badge">Folder</div>
+                <span class="folder-chip">docs/ai-tools</span>
                 <h2>AI Tools</h2>
-                <p>Các tài liệu về công cụ AI coding, agent workflow, MCP, rules, skills và automation.</p>
+                <p>Công cụ AI coding, agent workflow, MCP, rules, skills và automation.</p>
               </div>
-              <span class="folder-count">01 doc</span>
+              <span class="doc-count">1 tài liệu</span>
             </div>
 
-            <div class="folder-grid">
-              <article class="doc-tile">
-                <a class="tile-icon" href="docs/ai-tools/antigravity-google.html" aria-label="Đọc Google Antigravity">
+            <div class="doc-grid">
+              <article class="doc-card">
+                <a class="doc-card-icon" href="docs/ai-tools/antigravity-google.html" aria-label="Đọc Google Antigravity">
                   <span>AG</span>
                 </a>
-                <div class="tile-body">
-                  <div class="doc-kicker">Guide · AI Coding Agent</div>
+                <div class="doc-card-body">
+                  <div class="doc-meta">Guide · AI Coding Agent</div>
                   <h3><a href="docs/ai-tools/antigravity-google.html">Google Antigravity</a></h3>
-                  <p>
-                    Khái niệm, cách sử dụng, MCP, Skills, Rules, Plugins, CLI và workflow an toàn khi dùng Antigravity.
-                  </p>
+                  <p>Khái niệm, cách sử dụng, MCP, Skills, Rules, Plugins, CLI và workflow an toàn khi dùng Antigravity.</p>
                   <div class="doc-tags" aria-label="Chủ đề tài liệu">
                     <span>Antigravity</span>
                     <span>AI Agent</span>
                     <span>MCP</span>
                   </div>
                 </div>
-                <a class="tile-read" href="docs/ai-tools/antigravity-google.html">Đọc →</a>
+                <a class="doc-read" href="docs/ai-tools/antigravity-google.html">Đọc ngay</a>
               </article>
             </div>
           </section>
 
-          <section id="coming-soon" class="folder-section muted-section">
-            <div class="folder-heading small">
-              <div>
-                <div class="folder-badge">Next</div>
-                <h2>Folder tiếp theo</h2>
-                <p>Frontend, Backend, Security hoặc Database sẽ được thêm khi có tài liệu mới.</p>
-              </div>
-            </div>
+          <section id="frontend" class="empty-folder-panel">
+            <span class="folder-chip">docs/frontend</span>
+            <h2>Frontend</h2>
+            <p>Chưa có tài liệu. Sau này có thể thêm UI/UX, HTML/CSS, JavaScript, React, Next.js.</p>
+          </section>
+
+          <section id="backend" class="empty-folder-panel">
+            <span class="folder-chip">docs/backend</span>
+            <h2>Backend</h2>
+            <p>Chưa có tài liệu. Sau này có thể thêm API, auth, service, queue, architecture.</p>
+          </section>
+
+          <section id="security" class="empty-folder-panel">
+            <span class="folder-chip">docs/security</span>
+            <h2>Security</h2>
+            <p>Chưa có tài liệu. Sau này có thể thêm CVE, audit, secure coding, upload security.</p>
           </section>
         </div>
       </div>
