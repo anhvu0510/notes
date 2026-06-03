@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
+  <div class="page-glow page-glow-one"></div>
+  <div class="page-glow page-glow-two"></div>
+
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Notes Docs Home">
@@ -15,7 +18,7 @@
         <span class="brand-text">Notes Docs</span>
       </a>
       <nav class="site-nav" aria-label="Điều hướng chính">
-        <a href="index.html" aria-current="page">Tài liệu</a>
+        <a href="index.html" aria-current="page">Docs</a>
         <a href="https://github.com/anhvu0510/notes" target="_blank" rel="noopener noreferrer">GitHub</a>
       </nav>
     </div>
@@ -24,16 +27,27 @@
   <main class="home-main">
     <section class="library-hero">
       <div class="container library-hero-inner">
-        <div>
-          <p class="eyebrow">Documentation Library</p>
-          <h1>Tài liệu</h1>
+        <div class="hero-copy">
+          <p class="eyebrow">Personal Knowledge Base</p>
+          <h1>Thư viện tài liệu kỹ thuật</h1>
           <p class="library-subtitle">
-            Nơi lưu các hướng dẫn kỹ thuật, ghi chú học tập và tài liệu thực hành.
+            Tổng hợp các ghi chú, hướng dẫn công cụ, workflow và tài liệu thực hành được trình bày theo chuẩn dễ đọc, dễ mở rộng trên GitHub Pages.
           </p>
         </div>
-        <div class="library-count" aria-label="Số lượng tài liệu">
-          <strong>01</strong>
-          <span>tài liệu hiện có</span>
+
+        <div class="hero-panel" aria-label="Thống kê thư viện">
+          <div>
+            <span class="panel-label">Available docs</span>
+            <strong>01</strong>
+          </div>
+          <div>
+            <span class="panel-label">Format</span>
+            <strong>HTML</strong>
+          </div>
+          <div>
+            <span class="panel-label">Deploy</span>
+            <strong>Pages</strong>
+          </div>
         </div>
       </div>
     </section>
@@ -41,30 +55,42 @@
     <section class="section docs-section" aria-labelledby="docs-title">
       <div class="container">
         <div class="section-heading compact-heading">
-          <h2 id="docs-title">Danh sách tài liệu</h2>
+          <div>
+            <p class="eyebrow">Documents</p>
+            <h2 id="docs-title">Tài liệu mới nhất</h2>
+          </div>
           <p>Chọn tài liệu để đọc trực tiếp trên web.</p>
         </div>
 
         <div class="docs-list">
-          <article class="doc-row">
-            <div class="doc-row-main">
+          <article class="doc-card-featured">
+            <a class="doc-cover" href="docs/antigravity-google.html" aria-label="Đọc tài liệu Google Antigravity">
+              <span class="doc-icon">AG</span>
+              <span class="doc-status">Ready</span>
+            </a>
+
+            <div class="doc-content">
               <div class="doc-kicker">Guide · AI Coding Tool</div>
-              <h3>Google Antigravity</h3>
+              <h3><a href="docs/antigravity-google.html">Google Antigravity</a></h3>
               <p>
-                Giải thích khái niệm, cách sử dụng, MCP, Skills, Rules, Plugins,
-                CLI, workflow an toàn và các ứng dụng thực tế khi dùng Antigravity.
+                Tài liệu tiếng Việt giải thích Antigravity: khái niệm, cách sử dụng, MCP, Skills, Rules, Plugins,
+                CLI, workflow an toàn và các ứng dụng thực tế khi dùng AI coding agent.
               </p>
+
               <div class="doc-tags" aria-label="Chủ đề tài liệu">
                 <span>Antigravity</span>
                 <span>AI Agent</span>
                 <span>Workflow</span>
-                <span>GitHub Pages</span>
+                <span>MCP</span>
               </div>
             </div>
-            <a class="read-link" href="docs/antigravity-google.html" aria-label="Đọc tài liệu Google Antigravity">
-              Đọc tài liệu
-              <span aria-hidden="true">→</span>
-            </a>
+
+            <div class="doc-action">
+              <a class="read-link" href="docs/antigravity-google.html" aria-label="Đọc tài liệu Google Antigravity">
+                Đọc ngay
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
           </article>
         </div>
       </div>
