@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tài liệu tiếng Việt về Google Antigravity." />
+  <title>Google Antigravity | Notes Docs</title>
+  <link rel="stylesheet" href="../../assets/css/styles.css" />
+</head>
+<body class="article-page">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../../index.html" aria-label="Notes Docs Home">
+        <span class="brand-mark">N</span>
+        <span class="brand-text">Notes Docs</span>
+      </a>
+      <nav class="site-nav" aria-label="Điều hướng chính">
+        <a href="../../index.html">Docs</a>
+        <a href="https://github.com/anhvu0510/notes" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="article-layout">
+    <article class="article-shell">
+      <a class="back-link" href="../../index.html">← Về thư viện</a>
+
+      <p class="eyebrow">AI Tools · Guide</p>
+      <h1>Google Antigravity — Khái niệm, cách sử dụng và ứng dụng thực tế</h1>
+
+      <p class="article-note">
+        Tài liệu này tóm tắt Google Antigravity theo hướng thực chiến: hiểu công cụ, biết cách giao việc cho agent, tổ chức workflow an toàn và ứng dụng vào dự án thật.
+      </p>
+
+      <h2>1. Google Antigravity là gì?</h2>
+      <p>
+        Google Antigravity là môi trường phát triển phần mềm theo hướng <strong>agent-first</strong>. Thay vì chỉ gợi ý code từng dòng, agent có thể nhận mục tiêu, đọc codebase, lập kế hoạch, sửa file, chạy terminal, kiểm tra browser, tạo artifact và báo cáo kết quả.
+      </p>
+
+      <pre><code>IDE truyền thống:
+User viết code -> AI gợi ý -> User tự kiểm tra -> User tự chạy test
+
+Antigravity:
+User giao mục tiêu -> Agent lập plan -> Agent sửa code -> Agent chạy test -> Agent tạo artifact -> User review</code></pre>
+
+      <h2>2. Các khái niệm chính</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Khái niệm</th>
+            <th>Vai trò</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Agent</td>
+            <td>AI worker có thể xử lý task nhiều bước trong codebase.</td>
+          </tr>
+          <tr>
+            <td>Agent Manager</td>
+            <td>Khu vực quản lý task, tiến độ, artifact và nhiều agent song song.</td>
+          </tr>
+          <tr>
+            <td>Editor</td>
+            <td>Nơi đọc code, sửa file, review diff và tương tác theo context project.</td>
+          </tr>
+          <tr>
+            <td>Terminal</td>
+            <td>Dùng để cài package, chạy lint, test, build hoặc script.</td>
+          </tr>
+          <tr>
+            <td>Browser</td>
+            <td>Kiểm tra UI/web app như người dùng thật, có thể ghi lại kết quả.</td>
+          </tr>
+          <tr>
+            <td>Artifact</td>
+            <td>Bằng chứng để review: plan, diff, screenshot, recording, test output.</td>
+          </tr>
+          <tr>
+            <td>MCP</td>
+            <td>Kết nối agent với tool/server bên ngoài như GitHub, Supabase, database, API nội bộ.</td>
+          </tr>
+          <tr>
+            <td>Skills</td>
+            <td>Gói hướng dẫn tái sử dụng cho một loại task như UI design, refactor, test, audit.</td>
+          </tr>
+          <tr>
+            <td>Rules</td>
+            <td>Luật nền buộc agent tuân thủ trong toàn project.</td>
+          </tr>
+          <tr>
+            <td>Plugins</td>
+            <td>Đóng gói skills, rules, MCP, hooks và agent config thành một bộ cài.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>3. Cách sử dụng cơ bản</h2>
+      <ol>
+        <li>Cài Antigravity từ trang chính thức.</li>
+        <li>Mở folder project local.</li>
+        <li>Cấu hình rules, skills hoặc MCP nếu cần.</li>
+        <li>Giao task rõ mục tiêu, phạm vi, ràng buộc và tiêu chí hoàn thành.</li>
+        <li>Yêu cầu agent lập plan trước nếu task lớn.</li>
+        <li>Review diff, artifact, screenshot và test output trước khi merge.</li>
+      </ol>
+
+      <h3>Prompt giao task chuẩn</h3>
+      <pre><code>## Mục tiêu
+Tối ưu trang dashboard users để load nhanh hơn và UI chuyên nghiệp hơn.
+
+## Phạm vi
+- app/dashboard/users
+- components/user-table
+- API route liên quan nếu cần
+
+## Ràng buộc
+- Không đổi database schema.
+- Không đổi response API hiện tại.
+- Không xóa chức năng cũ.
+
+## Tiêu chí hoàn thành
+- npm run build pass.
+- Table không overflow trên mobile.
+- Có loading state và empty state.
+- Trả về summary các file đã sửa.</code></pre>
+
+      <h2>4. Ứng dụng thực tế</h2>
+      <ul>
+        <li><strong>Build feature:</strong> thêm export CSV, search, filter, loading/error state.</li>
+        <li><strong>Refactor:</strong> tách service, repository, validation nhưng giữ API public.</li>
+        <li><strong>Debug:</strong> đọc log, tìm endpoint lỗi, đề xuất fix an toàn.</li>
+        <li><strong>UI/UX:</strong> redesign dashboard, tối ưu table, responsive, empty state.</li>
+        <li><strong>Testing:</strong> viết unit test, integration test, edge case và error case.</li>
+        <li><strong>Security audit:</strong> kiểm tra upload, auth, permission, path traversal, input validation.</li>
+      </ul>
+
+      <h2>5. Workflow an toàn</h2>
+      <pre><code>Bước 1: Tạo branch/worktree mới
+Bước 2: Giao task rõ ràng cho agent
+Bước 3: Agent đọc code và tạo plan
+Bước 4: User duyệt plan
+Bước 5: Agent sửa code
+Bước 6: Agent chạy lint/test/build
+Bước 7: Agent tạo artifact/screenshot/report
+Bước 8: User review diff
+Bước 9: User tự test lại flow quan trọng
+Bước 10: Commit/merge</code></pre>
+
+      <h2>6. Best practices</h2>
+      <ul>
+        <li>Giao task rõ ràng, không dùng prompt mơ hồ kiểu “fix app này”.</li>
+        <li>Chia task lớn thành nhiều task nhỏ.</li>
+        <li>Luôn yêu cầu plan trước khi refactor lớn hoặc thay đổi kiến trúc.</li>
+        <li>Không cho agent tự chạy lệnh nguy hiểm như <code>rm -rf</code>, <code>git reset --hard</code>, <code>prisma migrate reset</code> nếu chưa duyệt.</li>
+        <li>Review diff thủ công, không merge chỉ vì agent báo done.</li>
+        <li>Giới hạn quyền MCP, nhất là với database hoặc production service.</li>
+      </ul>
+
+      <h2>7. Nguồn tham khảo</h2>
+      <ul>
+        <li><a href="https://antigravity.google/docs/home" target="_blank" rel="noopener noreferrer">Google Antigravity Docs Home</a></li>
+        <li><a href="https://antigravity.google/docs/overview" target="_blank" rel="noopener noreferrer">Overview</a></li>
+        <li><a href="https://antigravity.google/docs/features" target="_blank" rel="noopener noreferrer">Features</a></li>
+        <li><a href="https://antigravity.google/docs/mcp" target="_blank" rel="noopener noreferrer">MCP</a></li>
+        <li><a href="https://antigravity.google/docs/skills" target="_blank" rel="noopener noreferrer">Skills</a></li>
+        <li><a href="https://antigravity.google/docs/plugins" target="_blank" rel="noopener noreferrer">Plugins</a></li>
+      </ul>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© Notes Docs</p>
+      <a href="https://github.com/anhvu0510/notes" target="_blank" rel="noopener noreferrer">Repository</a>
+    </div>
+  </footer>
+</body>
+</html>
